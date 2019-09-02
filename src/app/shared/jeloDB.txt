@@ -1,0 +1,111 @@
+private najpopularnijaHrana: Jelo[] = [
+    new Jelo('Azijsko jelo', 'Azisko jelo specijal sa opisom', 390,
+    'https://www.asia-food-palace.de/wp-content/uploads/motopress-slider/import/Fotolia_96654135_M.jpg', 'Asia Food',
+    [
+      new Ingredient('Sargarepa', 20, 'g'),
+      new Ingredient('Pirinac', 150, 'g'),
+      new Ingredient('Kukuruz', 20, 'g'),
+      new Ingredient('Crni luk', 20, 'g'),
+      new Ingredient('Tikvica', 20, 'g'),
+      new Ingredient('Belo meso', 100, 'g'),
+      new Ingredient('Soja sos', 50, 'mL'),
+      new Ingredient('Limeta', 5, ' kriski')
+    ],
+    [
+      new Nutrition('Proteini', 50, 'g'),
+      new Nutrition('Masti', 6, 'g'),
+      new Nutrition('Ugljeni hidrati', 120, 'g')
+    ]),
+    new Jelo('Vocna salata', 'Salata od voca sa opisom', 290,
+    'http://images.media-allrecipes.com/userphotos/960x960/4518422.jpg',
+    'Voce i povrce',
+    [
+      new Ingredient('Jagoda', 30, 'g'),
+      new Ingredient('Borovnica', 30, 'g'),
+      new Ingredient('Kivi', 30, 'g'),
+      new Ingredient('Banana', 40, 'g'),
+      new Ingredient('Jabuka', 30, 'g')
+    ],
+    [
+      new Nutrition('Proteini', 20, 'g'),
+      new Nutrition('Masti', 2, 'g'),
+      new Nutrition('Ugljeni hidrati', 10, 'g'),
+      new Nutrition('Fruktoza', 5, 'g')
+    ]),
+    new Jelo('Salata od povrca', 'Salata od povrca sa opisom', 290,
+    'https://nourisheveryday.com/wp-content/uploads/2018/01/Broccoli-Buckwheat-Salad-Semi-Dried-Tomatoes-6-500x500.jpg',
+    'Voce i povrce',
+    [
+      new Ingredient('Paradajz', 30, 'g'),
+      new Ingredient('Brokoli', 20, 'g'),
+      new Ingredient('Rukola', 20, 'g'),
+      new Ingredient('Crni luk', 20, 'g'),
+      new Ingredient('Beli sir', 20, 'g'),
+      new Ingredient('Semenke', 100, 'g')
+    ],
+    [
+      new Nutrition('Proteini', 15, 'g'),
+      new Nutrition('Mlecne masti', 5, 'g'),
+      new Nutrition('Ugljeni hidrati', 50, 'g'),
+    ]),
+    new Jelo('Di Napoli', 'Pizza specijal kuce', 480,
+    'https://citymagazine.rs/wp-content/uploads/2016/06/10349145_680633112032721_4057936102251390000_n-660x439.jpg',
+    'Dinapoli',
+    [
+      new Ingredient('Testo', 140, 'g'),
+      new Ingredient('Panna', 30, 'g'),
+      new Ingredient('Mozzarella', 30, 'g'),
+      new Ingredient('Sunka', 50, 'g'),
+      new Ingredient('Rukola', 20, 'g'),
+      new Ingredient('Parmezan', 20, 'g')
+    ],
+    [
+      new Nutrition('Proteini', 50, 'g'),
+      new Nutrition('Masti', 5, 'g'),
+      new Nutrition('Ugljeni hidrati', 120, 'g')
+    ]),
+    new Jelo('Pesto Genovese', 'Pasta specijal kuce sa opisom', 310,
+    'https://fastly.4sqi.net/img/general/600x600/45444351_qrGOyur23QlmQ_rn699xbQ2R6cGmPKCR5zOHFPwfV54.jpg',
+    'Dinapoli',
+    [
+      new Ingredient('Pasta', 150, 'g'),
+      new Ingredient('Beli luk', 10, 'g'),
+      new Ingredient('Parmezan', 20, 'g'),
+      new Ingredient('Panna', 30, 'g'),
+      new Ingredient('Pesto sos', 25, 'g'),
+      new Ingredient('Mozzarella', 30, 'g'),
+      new Ingredient('Maslinke', 6, ' komada'),
+      new Ingredient('Limeta', 5, ' kriski')
+    ],
+    [
+      new Nutrition('Proteini', 40, 'g'),
+      new Nutrition('Masti', 5, 'g'),
+      new Nutrition('Ugljeni hidrati', 120, 'g')
+    ]
+    ),
+    new Jelo('Big Burger', 'Burger specijal sa opisom', 470,
+    'https://miro.medium.com/max/1200/0*yEjZaSvj7LdZ4THY',
+    'Rostilj kod Dzoa',
+    [
+      new Ingredient('Lepinja', 1, ' komad'),
+      new Ingredient('Pljeskavica od cistog govedjeg mesa', 400, 'g'),
+      new Ingredient('Slanina', 30, 'g'),
+      new Ingredient('Topljeni sir', 40, 'g'),
+    ],
+    [
+      new Nutrition('Proteini', 70, 'g'),
+      new Nutrition('Masti', 15, 'g'),
+      new Nutrition('Ugljeni hidrati', 170, 'g')
+    ]),
+    new Jelo('Sladoled Stracatela', 'Dve kugle Stracatela sladoleda', 200,
+    'https://www.nestleusa.com/asset-library/PublishingImages/Brands/2019/Ice%20Cream/haagen-dazs-button-2019.jpg',
+    'IceBox',
+    [
+      new Ingredient('Stracatela sladoled', 2, 'Kugle'),
+    ],
+    [
+      new Nutrition('Proteini', 0, 'g'),
+      new Nutrition('Mlecne Masti', 1, 'g'),
+      new Nutrition('Ugljeni hidrati', 0, 'g')
+    ])
+  ];

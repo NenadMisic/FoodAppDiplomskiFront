@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2 textCentered padding10">
+      <h1> Restorani u ponudi: </h1>
+    </div>
+  </div>
+  <div class="row restoran" *ngFor="let restoran of restorani">
+    <div class="col-md-3 noPadding">
+      <div class="logoHolder" (click)="goToRestoran(restoran)">
+        <img [src]="restoran.imgUrl" class="logoImg">
+      </div>
+    </div>
+    <div class="col-md-6" style="padding-top: 3%;">
+      <p>{{restoran.description}}</p>
+      <i class="fas fa-map-marker-alt"></i>&nbsp;
+      <span>{{restoran.adress}}</span>
+    </div>
+    <div class="col-md-3" style="padding-top: 6%;">
+      <div class="align-middle">
+        <i class="fas fa-phone"></i>&nbsp;
+        <span>{{restoran.phone}}</span>
+      </div>
+    </div>
+  </div>
+</div>

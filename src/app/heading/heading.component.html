@@ -1,0 +1,17 @@
+<header class="container col-lg-12 col-md-12 col-sm-12">
+  <nav>
+    <ul>
+      <li routerLink="/pocetna" routerLinkActive="active">Pocetna</li>
+      <li routerLink="/restorani" routerLinkActive="active">Naruci</li>
+      <li>O nama</li>
+      <li>Podrska korisnicima</li>
+    </ul>
+  </nav>
+  <div id="nalogKorpa">
+      <div id="korisnik" routerLink="/login">
+        {{username}} <i class="fas fa-user"></i>
+      </div>
+      <div id="korpa" routerLink="/shopping-cart"> Korpa <i class="fas fa-shopping-basket"></i> </div>
+      <div id="numOfItems"><span>{{numOfOrders}}</span></div>
+  </div>
+</header>

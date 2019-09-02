@@ -1,0 +1,42 @@
+#okvir{
+    background-color: rgba(245, 245, 245, 0.7);
+    margin: 0 auto;
+    height: 500px;
+    width: 600px;
+    border: 3px solid lightgray;
+    border-radius: 10px;
+    padding: 30px;
+    color: rgb(20, 20, 20);
+    font-size: 25px;
+}
+.container{
+    padding: 5%;
+    background-image: url("../../assets/1184187-gorgerous-healthy-food-wallpaper-1920x1080.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+input{
+    float: right;
+    margin-left: 10px;
+    font-size: 25px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgb(20, 20, 20);
+}
+.linkedText{
+    color: royalblue;
+}
+.linkedText:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+section{
+    padding: 10px;
+    margin-top: 30px;
+}
+section:last-child{
+    font-size: 20px;
+    margin-top: 80px;
+    padding-left: 10%;
+}

@@ -1,0 +1,33 @@
+.noPadding {
+  padding: 0;
+}
+
+.logoHolder {
+  height: 150px;
+  width: 150px;
+}
+.logoImg {
+  height: inherit;
+  width: inherit;
+}
+
+.logoHolder:hover {
+  cursor: pointer;
+}
+
+.jelo {
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-bottom: 10px;
+  background-color: rgba(245, 245, 245, 0.5);
+  border: 2px solid lightgray;
+}
+.back {
+  font-size: 2em;
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  background-color: rgba(245, 245, 245, 0.5);
+  border: 0;
+  border-radius: 7px;
+}

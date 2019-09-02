@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Archivo";
+    src: url("./assets/Archivo/Archivo-Regular.ttf");
+}
+
+body, html, header{
+    padding: 0;
+    margin: 0;
+    font-family: 'Archivo';
+}
+
+/*body{
+    background-color: rgba(126, 195, 176, 0.2);
+    background: url("./assets/table_fruits_vegetables_dishes_exotic_78746_2560x1080.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+}*/
+
+.textCentered {
+    text-align: center;
+}
+
+.padding10{
+    padding: 10px;
+}
+
+.border{
+    border: 1px solid black;
+}
+.active {
+    color: skyblue;
+}
+
+.container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(245, 245, 245, 0.7);
+}

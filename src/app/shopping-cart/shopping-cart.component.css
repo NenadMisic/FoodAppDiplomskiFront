@@ -1,0 +1,22 @@
+.container{
+    font-size: 1.7rem;
+    background-color: rgba(245, 245, 245, 0.7);
+}
+
+.column{
+    border-bottom: 1px solid gray;
+}
+
+.padding{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.noPadding {
+    padding: 0;
+}
+
+.mainButtons{
+    height: 40px;
+    width: 100%;
+}

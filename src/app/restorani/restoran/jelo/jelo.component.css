@@ -1,0 +1,35 @@
+.foodHome {
+    max-height: 300px;
+    width: 300px;
+    overflow: hidden;
+}
+img {
+    max-height: 300px;
+}
+
+.back {
+    font-size: 2em;
+    position: absolute;
+    top: 20px;
+    left: -240px;
+    background-color: rgba(245, 245, 245, 0.5);
+    border: 0;
+    border-radius: 7px;
+}
+
+.row:first-child{
+    margin-bottom: 25px;
+}
+
+.row:not(:first-child) {
+    font-size: 20px;
+}
+
+.container>.row:last-child{
+    margin-top: 25px;
+}
+
+.btn{
+    height: 100%;
+    width: 100%;
+}

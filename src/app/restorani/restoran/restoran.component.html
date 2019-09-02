@@ -1,0 +1,45 @@
+<div *ngIf="restoranLoaded && jelovnikLoaded" class="container">
+  <div class="row">
+    <div class="col-md-12" style="text-align: center">
+      <button class="back active" type="button" routerLink="/restorani">
+        <i class="fas fa-chevron-left"></i>&nbsp;Restorani
+      </button>
+      <h1>{{restoran.name}}</h1>
+      <p>{{restoran.description}} </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" style="text-align: center">{{restoran.adress}}</div>
+    <div class="col-md-6" style="text-align: center">{{restoran.phone}}</div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12" style="text-align: center">
+      <h3>U ponudi:</h3>
+    </div>
+  </div>
+  <div class="row jelo" *ngFor="let jelo of jelovnik">
+    <div class="col-md-3 noPadding">
+      <div class="logoHolder" (click)="onJeloClick(jelo)">
+        <img [src]="jelo.imgUrl" class="logoImg">
+      </div>
+    </div>
+    <div class="col-md-6" style="padding-top: 3%;">
+      <p><strong>{{jelo.name}}</strong></p>
+      <span>{{jelo.description}}</span>
+    </div>
+    <div class="col-md-3" style="padding-top: 5%;">
+      <span class="align-middle">{{jelo.price}} RSD</span> &nbsp;
+      <span class="align-middle">
+        <button type="button" class="btn btn-success" (click)="toCheckOut(jelo)">U korpu</button>
+      </span>
+    </div>
+  </div>
+</div>
+<div *ngIf="!restoranLoaded || !jelovnikLoaded" class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1> Loading... </h1>
+    </div>
+  </div>
+</div>

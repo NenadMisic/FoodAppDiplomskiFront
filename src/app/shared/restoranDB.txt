@@ -1,0 +1,11 @@
+  private restorani2: Restoran[] = [
+    new Restoran('Asia Food', 'Restoran azijske hrane', 'Brankova 7', 'http://asiafood-bg.com/media/prazno.jpg', '063/132-1354'),
+    new Restoran('Dinapoli', 'Italijanska kuhinja', 'Bulevar Zorana Djindjica 12E',
+    'http://dinapoli.rs/wp-content/uploads/2015/04/DSC08284-min.jpg', '011/123-398'),
+    new Restoran('Voce i povrce', 'Obrok salate od voca i povrca', 'Nemanjina 34a',
+    'https://tangerineuk.net/wp-content/uploads/2015/06/Barratt-Web-Roundels-Fruit-Salad.jpg', '064/789-1234'),
+    new Restoran('Rostilj kod Dzoa', 'Domaci i rostilj na Americki nacin', 'Bulevar Mihajla Pupina 123',
+    'https://www.bijeljina.org/podaci/companydirectory/id404/935369_11602169_1373391942.jpg', '069/148-967'),
+    new Restoran('IceBox', 'Ice cream and Frozen yogurt', 'Kneza Mihaila 53',
+    'http://www.icebox.rs/en/images/frozen-yogurt1.jpg', '011/284-223')
+  ];

@@ -1,0 +1,56 @@
+<div class="container">
+  <div *ngIf="!empty">
+    <div class="row">
+      <div class="col-md-12 noPadding" style="text-align: center; margin-bottom: 20px;">
+        <h1> Vase narudbine:</h1>
+      </div>
+    </div>
+    <div class="row" *ngFor="let order of orders; let i = index">
+      <div class="col-md-5 offset-md-2 column noPadding">
+        <span> {{ order.item.name }} </span> <span> ({{ order.item.restoranName }})&nbsp;:&nbsp;</span> <span>{{order.amount}}</span>
+      </div>
+      <div class="col-md-3 column noPadding" style="text-align: right;">
+        <span> {{order.item.price}} RSD </span>
+        <span>
+          <button type="button" class="btn btn-success" (click)="onOrderAddOne(i)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </span>
+        <span>
+          <button type="button" class="btn btn-warning" (click)="onOrderRemoveOne(i)">
+              <i class="fas fa-minus"></i>
+          </button>
+        </span>
+        <span>
+          <button type="button" class="btn btn-danger" (click)="onOrderRemove(i)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="row padding">
+      <div class="col-md-5 offset-md-2 noPadding">
+        <span> Total: </span>
+      </div>
+      <div class="col-md-3 noPadding" style="text-align: right;">
+        <span> {{ bill }} RSD</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 noPadding">
+        <button type="button" class="btn btn-success mainButtons" (click)="proceedPayment()"> Nastavi </button>
+      </div>
+      <div class="col-md-6 noPadding">
+        <button type="button" class="btn btn-danger mainButtons" (click)="onClear()"> Obrisi sve </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="empty">
+    <div class="row">
+      <div class="col-md-12" style="text-align: center; padding: 20px;">
+        <h1> Vasa korpa je prazna </h1>
+        <h1> Sredi countOrders() funkciju u korpa service </h1>
+      </div>
+    </div>
+  </div>
+</div>
