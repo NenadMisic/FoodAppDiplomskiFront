@@ -9,11 +9,13 @@ import { Order } from '../shared/order.model';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css']
 })
-export class ShoppingCartComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   bill: number;
   empty = true;
-  orders: Order[] = [];
+  orders: Array<Jelo[]> = [];
+  cartItems: Jelo[] = [];
+  groupLength = [];
 
   /*items: Jelo[] = [];
   amount: number[] = [];*/
@@ -26,44 +28,26 @@ export class ShoppingCartComponent implements OnInit, OnDestroy, AfterViewInit {
     this.bill = 0;
     this.orders = this.korpaService.getOrders();
     this.updateOrder2(this.orders);
-    this.orderSub = this.korpaService.getOrdersObs().subscribe((orders: Order[]) => {
+    console.log('SHOPPING CART ON-INIT: ', this.orders);
+    this.orderSub = this.korpaService.getOrdersObs().subscribe((orders: Array<Jelo[]>) => {
+      console.log('SHOPPING CART ON-INIT ON SUB: ', this.orders);
       this.updateOrder2(orders);
     });
-    /*const naruzbina = this.korpaService.getNarudzbina();
-    this.items = naruzbina.items;
-    this.amount = naruzbina.amount;
-    this.updateOrder(this.items);
-    this.orderSub = this.korpaService.getNarudzbinaObs().subscribe((extractedOrders: Narudzbina) => {
-      this.items = extractedOrders.items;
-      this.amount = extractedOrders.amount;
-      this.updateOrder(this.items);
-    });*/
 
   }
 
-  ngAfterViewInit() {
-    // this.countOrders();
-  }
-
-  /*private updateOrder(jela: Jelo[]) {
-    if (jela.length > 0) {
-      this.empty = false;
-      let varBill = 0;
-      this.items.forEach((order: Jelo, index) => {
-        varBill += order.price * this.amount[index];
-      });
-      this.bill = varBill;
-    } else {
-      this.empty = true;
-    }
-  }*/
-
-  private updateOrder2(orders: Order[]) {
+  private updateOrder2(orders: Array<Jelo[]>) {
     if (orders.length > 0) {
+      this.orders = orders;
+      this.cartItems = [];
+      this.groupLength = [];
+      console.log('SHOPPING CART UPDATE ORDER: ', this.orders);
       this.empty = false;
       let varBill = 0;
-      this.orders.forEach((order: Order) => {
-        varBill += order.item.price * order.amount;
+      this.orders.forEach(array => {
+        this.cartItems.push(array[0]);
+        this.groupLength.push(array.length);
+        varBill += array[0].price * array.length;
       });
       this.bill = varBill;
     } else {
@@ -71,16 +55,17 @@ export class ShoppingCartComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  onOrderRemove(index: number) {
-    this.korpaService.deleteNarudzbinu(index);
+  onOrderAddOne(jelo: Jelo) {
+    this.korpaService.applyNarudzbinu(jelo);
   }
 
-  onOrderAddOne(index: number) {
-    this.korpaService.applyNarudzbinu(this.orders[index].item);
+  onOrderRemoveOne(jeloName: string) {
+    this.korpaService.deleteOneNarudzbinu(jeloName);
   }
 
-  onOrderRemoveOne(index: number) {
-    this.korpaService.deleteOneNarudzbinu(this.orders[index].item.name, index);
+
+  onOrderRemove(jeloName: string) {
+    this.korpaService.deleteNarudzbinu(jeloName);
   }
 
   ngOnDestroy() {

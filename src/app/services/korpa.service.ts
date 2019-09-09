@@ -13,60 +13,52 @@ export interface Narudzbina {
 })
 export class KorpaService {
 
-  // private narudzbineChanged = new Subject<Jelo[]>();
   private narudzbine: Jelo[] = [];
 
-  // private narudzbinaChanged = new Subject<Narudzbina>();
-  // private narudzbina: Narudzbina = {items: [], amount: []};
-
-  private ordersChanged = new Subject<Order[]>();
-  private orders: Order[] = [];
-  /*items: Jelo[] = [];
-  amount: number[] = [];*/
+  private ordersChanged = new Subject<Array<Jelo[]>>();
+  private orders: Array<Jelo[]>;
 
   constructor() { }
 
-  /*public getNarudzbineObs(): Observable<Jelo[]> {
-    return this.narudzbineChanged.asObservable();
-  }*/
-
-  /*public getNarudzbinaObs(): Observable<Narudzbina> {
-    return this.narudzbinaChanged.asObservable();
-  }*/
-
-  /*public getNarudzbina(): Narudzbina {
-  this.countOrders();
-  return this.narudzbina;
-}*/
-
-  public getOrdersObs(): Observable<Order[]> {
+  public getOrdersObs(): Observable<Array<Jelo[]>> {
     return this.ordersChanged.asObservable();
   }
 
-  public getNarudzbine(): Jelo[] {
-    this.countOrders();
-    return this.narudzbine;
-  }
-
-  public getOrders(): Order[] {
+  public getOrders(): Array<Jelo[]> {
     this.countOrders();
     return this.orders;
   }
 
   public applyNarudzbinu(jelo: Jelo) {
     this.narudzbine.push(jelo);
+    console.log('Narudzbine: ', this.narudzbine);
     this.prijaviPromene();
+    console.log('DODAT 1', this.orders);
   }
 
-  public deleteOneNarudzbinu(jeloName: string, index: number) {
-    const jeloIndex = this.narudzbine.findIndex(el => el.name === jeloName);
-    this.narudzbine.splice(jeloIndex, 1);
-    this.prijaviPromene();
+  public deleteOneNarudzbinu(jeloName: string) {
+    const orders = this.orders;
+    this.orders.forEach(array => {
+      if (array[0].name === jeloName) {
+        const i = this.orders.indexOf(array);
+        orders[i].pop();
+      }
+    });
+    this.orders = orders;
+    this.prijaviObrisano();
+    console.log('IZBRISAN 1', this.orders);
   }
 
-  public deleteNarudzbinu(index: number) {
-    this.orders.splice(index, 1);
-    this.prijaviPromene();
+  public deleteNarudzbinu(jeloName: string) {
+    const orders = this.orders;
+    this.orders.forEach(array => {
+      if (array[0].name === jeloName) {
+        orders.splice(this.orders.indexOf(array), 1);
+      }
+    });
+    this.orders = orders;
+    this.prijaviObrisano();
+    console.log('IZBRISAN RED', this.orders);
   }
 
   public clear() {
@@ -75,46 +67,40 @@ export class KorpaService {
   }
 
   private prijaviPromene() {
-    // this.narudzbineChanged.next(this.narudzbine);
-    // this.narudzbinaChanged.next(this.narudzbina);
     this.countOrders();
     this.ordersChanged.next(this.orders);
   }
 
+  private prijaviObrisano() {
+    const orders = [];
+    this.orders.forEach(array => {
+      array.forEach(el => {
+        orders.push(el);
+      });
+    });
+    this.narudzbine = orders;
+    this.ordersChanged.next(this.orders);
+  }
+
   public countOrders() {
-    this.orders = [];
-    const items: Jelo[] = [];
-    const amount: number[] = [];
-    const arr = this.narudzbine;
-    arr.forEach(el => {
-      let occurance = 0;
-      arr.forEach(el2 => {
-        if (el2.name === el.name) {
-          occurance++;
+
+    const groups = [...new Set(this.narudzbine.map(x => x.name))];
+    const groupedItems: Array<Jelo[]> = [];
+
+    console.log('Groups: ', groups);
+
+    groups.forEach(el => {
+      const singleGroup: Jelo[] = [];
+      this.narudzbine.forEach(el2 => {
+        if (el === el2.name) {
+          singleGroup.push(el2);
         }
       });
-      let occurance2 = 0;
-      items.forEach(el3 => {
-        if (items.length > 0 && occurance2 === 0) {
-          if (el3.name === el.name) {
-            occurance2++;
-          }
-        }
-      });
-      if (occurance2 === 0) {
-        items.push(el);
-        amount.push(occurance);
-      }
+      groupedItems.push(singleGroup);
     });
-    items.forEach((el, index) => {
-      const occurance = amount[index];
-      const order = new Order(el, occurance);
-      this.orders.push(order);
-    });
-    /*this.items = items;
-    this.amount = amount;*/
-    /*this.narudzbina.amount = amount;
-    this.narudzbina.items = items;*/
+
+    this.orders = groupedItems;
+    console.log(this.orders);
   }
 
 }

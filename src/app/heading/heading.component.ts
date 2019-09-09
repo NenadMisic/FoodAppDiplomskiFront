@@ -19,10 +19,10 @@ export class HeadingComponent implements OnInit {
 
   ngOnInit() {
     // this.numOfOrders = this.korpaService.getNarudzbine().length;
-    this.korpaService.getOrdersObs().subscribe((orders: Order[]) => {
+    this.korpaService.getOrdersObs().subscribe((orders: Array<Jelo[]>) => {
       let numOfOrders = 0;
-      orders.forEach((el: Order) => {
-        numOfOrders += el.amount;
+      orders.forEach(array => {
+        numOfOrders += array.length;
       });
       this.numOfOrders = numOfOrders;
     });
