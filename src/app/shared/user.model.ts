@@ -2,13 +2,11 @@ export class User {
 
     email: string;
     username: string;
-    password: string;
     admin: boolean;
 
-    constructor(email: string, username: string, password: string, admin: boolean) {
+    constructor(email: string, username: string, admin: boolean) {
         this.email = email;
         this.username = this.setUserName(username);
-        this.password = password;
         this.admin = admin;
     }
 

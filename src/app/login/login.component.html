@@ -1,19 +1,42 @@
 <div class="container">
   <div id="okvir" class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
-    <section>
-      <span class="linkedText" routerLink="/pocetna"> <i class="fas fa-chevron-left"></i> Pocetna </span>
-    </section>
-    <section>
-        <label for="korisnickoIme">Korisnicko ime:</label>
-        <input type="text" name="korisnickoIme" placeholder="Korisnik">
-    </section>
-    <section>
-        <label for="lozinka">Lozinka:</label>
-        <input type="password" name="lozinka" placeholder="*******">
-    </section>
-    <section>
-      <span>Nemate korisnicki nalog?</span>
-      <p class="linkedText" routerLink="/create"> Napravite novi nalog.</p>
-    </section>
+    <div class="row rowMarg">
+      <div class="col-md-10 offset-md-1">
+        <span class="linkedText" routerLink="/pocetna">
+          <i class="fas fa-chevron-left"></i> Pocetna
+        </span>
+      </div>
+    </div>
+    <form #form (ngSubmit)="login(form)" method="post">
+      <div class="row rowMarg">
+        <div class="col-md-4 offset-md-1"><label for="korisnickoIme">Email:</label></div>
+        <div class="col-md-5"><input type="email" name="email" placeholder="email@email.domen"></div>
+      </div>
+      <div class="row rowMarg">
+        <div class="col-md-4 offset-md-1"><label for="lozinka">Korisnicko ime:</label></div>
+        <div class="col-md-6"><input type="text" name="korisnicko_ime" placeholder="Kor. ime"></div>
+      </div>
+      <div class="row rowMarg">
+        <div class="col-md-4 offset-md-1"><label for="lozinka">Lozinka:</label></div>
+        <div class="col-md-6"><input type="password" name="lozinka" placeholder="*******"></div>
+      </div>
+      <div class="row" style="padding-bottom: 15px; padding-top: 15px;">
+        <div class="col-md-6 offset-md-3">
+          <button class="login" type="submit"> Login </button>
+        </div>
+      </div>
+      <div class="rowMarg1">
+        <div class="row">
+          <div class="col-md-10 offset-md-2">
+            <p>Nemate korisnicki nalog?</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-2">
+            <p class="linkedText" routerLink="/create"> Napravite novi nalog.</p>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
