@@ -4,10 +4,14 @@ export class User {
     username: string;
     admin: boolean;
 
-    constructor(email: string, username: string, admin: boolean) {
+    constructor(email: string, username: string, admin: number) {
         this.email = email;
         this.username = this.setUserName(username);
-        this.admin = admin;
+        if (admin <= 0) {
+            this.admin = false;
+        } else {
+            this.admin = true;
+        }
     }
 
     private setUserName(username): string {
@@ -19,6 +23,13 @@ export class User {
         }
         console.log(newUsername);
         return newUsername;
+    }
+
+    public setDefault(): User {
+        this.email = '';
+        this.username = 'Uloguj se';
+        this.admin = false;
+        return this;
     }
 
 }

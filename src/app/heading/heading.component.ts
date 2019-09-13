@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { KorpaService, Narudzbina } from '../services/korpa.service';
-import { pipe } from 'rxjs';
+import { KorpaService } from '../services/korpa.service';
 import { Jelo } from '../shared/jelo.model';
-import { Order } from '../shared/order.model';
 import { AuthService } from '../services/auth.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-heading',
@@ -15,13 +14,14 @@ export class HeadingComponent implements OnInit {
 
   username = 'Uloguj se';
   numOfOrders = 0;
+  isLoged = false;
 
   constructor(private router: Router, private korpaService: KorpaService, private auth: AuthService) { }
 
   ngOnInit() {
-    // this.numOfOrders = this.korpaService.getNarudzbine().length;
     this.auth.userSubject.subscribe(user => {
       this.username = user.username;
+      this.isLoged = this.auth.isLoged;
     });
     this.korpaService.getOrdersObs().subscribe((orders: Array<Jelo[]>) => {
       let numOfOrders = 0;
@@ -30,6 +30,10 @@ export class HeadingComponent implements OnInit {
       });
       this.numOfOrders = numOfOrders;
     });
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { LoginUser } from '../shared/loginUser.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +11,33 @@ import { FormsModule, NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginForm: FormGroup;
+  errorMsg = '';
+  errorOpened = false;
+
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required])
+    });
   }
 
   login(form: NgForm) {
-    
+    const user: LoginUser = new LoginUser(form.value.email, form.value.password);
+    this.auth.login(user).subscribe(data => {
+      this.router.navigateByUrl('/restorani');
+    }, err => {
+      if (err.error) {
+        this.errorMsg = err.error.message;
+        this.errorOpened = true;
+      }
+    });
+  }
+
+  closingError() {
+    this.errorOpened = false;
   }
 
 }

@@ -54,3 +54,16 @@ p{
     font-weight: bold;
     border: none;
 }
+
+.login:hover {
+    cursor: pointer;
+}
+
+button:disabled{
+    background-color: gray;
+}
+
+button:disabled:hover{
+    cursor: default;
+    background-color: gray;
+}

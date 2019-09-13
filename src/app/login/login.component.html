@@ -7,22 +7,28 @@
         </span>
       </div>
     </div>
-    <form #form (ngSubmit)="login(form)" method="post">
-      <div class="row rowMarg">
-        <div class="col-md-4 offset-md-1"><label for="korisnickoIme">Email:</label></div>
-        <div class="col-md-5"><input type="email" name="email" placeholder="email@email.domen"></div>
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" method="post">
+      <div *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched" class="row">
+        <div class="col-md-6 offset-md-6"><span style="color: red; font-size: 15px;">Molimo unesite ispravan email.</span>
+        </div>
       </div>
       <div class="row rowMarg">
-        <div class="col-md-4 offset-md-1"><label for="lozinka">Korisnicko ime:</label></div>
-        <div class="col-md-6"><input type="text" name="korisnicko_ime" placeholder="Kor. ime"></div>
+        <div class="col-md-4 offset-md-1"><label for="korisnickoIme">Email:</label></div>
+        <div class="col-md-5">
+          <input type="email" formControlName="email" placeholder="email@email.domen">
+        </div>
+      </div>
+      <div *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched" class="row">
+        <div class="col-md-6 offset-md-6"><span style="color: red; font-size: 15px;">Molimo unesite lozinku.</span>
+        </div>
       </div>
       <div class="row rowMarg">
         <div class="col-md-4 offset-md-1"><label for="lozinka">Lozinka:</label></div>
-        <div class="col-md-6"><input type="password" name="lozinka" placeholder="*******"></div>
+        <div class="col-md-6"><input type="password" formControlName="password" placeholder="*******"></div>
       </div>
       <div class="row" style="padding-bottom: 15px; padding-top: 15px;">
         <div class="col-md-6 offset-md-3">
-          <button class="login" type="submit"> Login </button>
+          <button class="login btn btn-primary" type="submit" [disabled]="!loginForm.valid"> Login </button>
         </div>
       </div>
       <div class="rowMarg1">
@@ -40,3 +46,4 @@
     </form>
   </div>
 </div>
+<app-error [open]="errorOpened" [error]="errorMsg" (openChanged)="closingError()"></app-error>
