@@ -37,7 +37,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   private updateOrder2(orders: Array<Jelo[]>) {
-    if (orders.length > 0) {
+    if (orders.length > 0 && orders[0].length > 0) {
       this.orders = orders;
       this.cartItems = [];
       this.groupLength = [];
@@ -53,6 +53,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     } else {
       this.empty = true;
     }
+    console.log(this.orders.length)
+    console.log(this.empty);
   }
 
   onOrderAddOne(jelo: Jelo) {

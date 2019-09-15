@@ -13,6 +13,8 @@ import { JeloComponent } from './restorani/restoran/jelo/jelo.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorComponent } from './error/error.component';
+import { FoodOverlayComponent } from './pocetna/food-overlay/food-overlay.component';
+import { UserDropdownComponent } from './heading/user-dropdown/user-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ErrorComponent } from './error/error.component';
     RestoranComponent,
     JeloComponent,
     ShoppingCartComponent,
-    ErrorComponent
+    ErrorComponent,
+    FoodOverlayComponent,
+    UserDropdownComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<div class="container" *ngIf="open" >
+  <div class="row">
+    <div class="col-sm-12">
+      <span><i class="fas fa-cog"></i> &nbsp;Podesavanja naloga </span>
+    </div>
+  </div>
+  <div class="row" (click)="auth()">
+    <div class="col-sm-12">
+      <span *ngIf="loggedIn"><i class="fas fa-sign-out-alt"></i> &nbsp;Odjavi se </span>
+      <span *ngIf="!loggedIn"><i class="fas fa-sign-in-alt"></i> &nbsp;Prijavi se </span>
+    </div>
+  </div>
+</div>

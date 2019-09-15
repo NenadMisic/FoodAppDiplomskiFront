@@ -19,8 +19,9 @@ export class AuthService {
     })
   };
 
+  defaultUser = new User('', 'Uloguj se', 0);
   userSubject: Subject<User> = new Subject<User>();
-  user = new User('', 'Uloguj se', 0);
+  user: User = this.defaultUser;
   isLoged = false;
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -50,7 +51,8 @@ export class AuthService {
   }
   logout() {
     this.isLoged = false;
-    this.user.setDefault();
+    this.user = this.defaultUser;
+    this.userSubject.next(this.user);
     this.router.navigateByUrl('/restorani');
     /*return this.http.post(`${environment.url}/auth/logout`, this.httpOptions)
     .pipe();*/

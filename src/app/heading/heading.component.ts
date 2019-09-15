@@ -15,6 +15,7 @@ export class HeadingComponent implements OnInit {
   username = 'Uloguj se';
   numOfOrders = 0;
   isLoged = false;
+  open = false;
 
   constructor(private router: Router, private korpaService: KorpaService, private auth: AuthService) { }
 
@@ -32,8 +33,12 @@ export class HeadingComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.auth.logout();
+  toggleDrop() {
+    this.open = !this.open;
+  }
+
+  closeDrop() {
+    this.open = false;
   }
 
 }

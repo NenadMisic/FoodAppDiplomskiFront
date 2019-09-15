@@ -8,10 +8,11 @@
     </ul>
   </nav>
   <div id="nalogKorpa">
-      <div id="korisnik" ngbDropdownToggle routerLink="/login">
+      <div id="korisnik" (click)="toggleDrop()">
         {{username}} <i class="fas fa-user"></i>
       </div>
-      <div id="korpa" routerLink="/shopping-cart"> Korpa <i class="fas fa-shopping-basket"></i> </div>
+      <app-user-dropdown [open]="open" [loggedIn]="isLoged" (closing)="closeDrop()"></app-user-dropdown>
+      <div id="korpa" routerLink="/shopping-cart" routerLinkActive="active"> Korpa <i class="fas fa-shopping-basket"></i> </div>
       <div id="numOfItems"><span>{{numOfOrders}}</span></div>
   </div>
 </header>

@@ -16,6 +16,8 @@ export class PocetnaComponent implements OnInit, OnDestroy {
   hranaSub: Subscription;
   user1: User;
   user2: User;
+  foodOverlayOpen = false;
+  hoverOverJelo: string;
 
   constructor(private jelaService: JelaService, private router: Router) { }
 
@@ -25,17 +27,19 @@ export class PocetnaComponent implements OnInit, OnDestroy {
     });
   }
 
-  openModal(e: MouseEvent) {
-    const xPos = e.clientX;
-    const yPos = e.clientY;
-    console.log(e);
-    console.log(xPos, yPos);
-  }
-
   onJeloClick(jelo: Jelo) {
     this.jelaService.setIzabranoJelo(jelo);
     console.log('/restorani', jelo.restoranName, jelo.name);
     this.router.navigate(['/restorani', jelo.restoranName, jelo.name]);
+  }
+
+  onJeloMouseOver(jeloName: string) {
+    this.foodOverlayOpen = true;
+    this.hoverOverJelo = jeloName;
+  }
+
+  onJeloMouseLeave() {
+    this.foodOverlayOpen = false;
   }
 
   ngOnDestroy() {

@@ -24,12 +24,4 @@ export class User {
         console.log(newUsername);
         return newUsername;
     }
-
-    public setDefault(): User {
-        this.email = '';
-        this.username = 'Uloguj se';
-        this.admin = false;
-        return this;
-    }
-
 }

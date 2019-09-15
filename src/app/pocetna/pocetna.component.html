@@ -10,10 +10,15 @@
             </div>
         </div>
     <div id="jela" class="row justify-content-around">
-        <div *ngFor="let jelo of hrana" class="col-sm-3 textCentered padding10 jela" (click)='onJeloClick(jelo)'>
+        <div *ngFor="let jelo of hrana"
+        class="col-sm-3 textCentered padding10 jela" 
+        (mouseover)="onJeloMouseOver(jelo.name)"
+        (mouseleave)="onJeloMouseLeave()">
+        <!--(click)="onJeloClick(jelo)"-->
             <div class="foodHome">
                 <!-- <img src="../../assets/foodhome/{{jelo.name}}.jpg"> -->
                 <img [src]="jelo.imgUrl">
+                <app-food-overlay [open]="foodOverlayOpen" [jelo]="jelo" [hoverOver]="hoverOverJelo"></app-food-overlay>
             </div>
         </div>
     </div>

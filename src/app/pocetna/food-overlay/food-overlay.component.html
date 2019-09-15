@@ -1,0 +1,18 @@
+<div class="container" *ngIf="open && jelo.name === hoverOver">
+  <div class="row">
+    <div class="column col-sm-7">
+      <p style="left: 7px;"> {{jelo.name}} </p>
+    </div>
+    <div class="column col-sm-5">
+      <p style="right: 7px;"> {{jelo.price}} RSD</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <button class="btn btn-info" (click)="onJeloClick()"> Detalji </button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-success" (click)="onKupi()"> Kupi </button>
+    </div>
+  </div>
+</div>

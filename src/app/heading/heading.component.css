@@ -16,15 +16,17 @@ li {
     border-top: 0;
     padding: 10px 20px 10px 20px;
     list-style: none;
+    outline: none;
 }
 li:last-child{
     border-right: 0;
 }
-li:hover{
+li:hover, #korpa:hover, #korisnik:hover{
     background-color: rgb(245, 245, 245);
     cursor: pointer;
 }
 #nalogKorpa{
+    position: relative;
     margin-top: -20px;
     float: right;
 }
@@ -33,11 +35,9 @@ li:hover{
 }
 #korpa, #korisnik{
     padding: 10px 10px 10px 10px;
+    outline: none;
 }
-#korpa:hover, #korisnik:hover{
-    cursor: pointer;
-    background-color: rgb(245, 245, 245);
-}
+
 .fa-shopping-basket, .fa-user{
     color: lightgray;
 }

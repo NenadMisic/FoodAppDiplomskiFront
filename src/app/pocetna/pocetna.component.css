@@ -12,6 +12,7 @@
 }
 
 .foodHome{
+    position: relative;
     height: 300px;
     max-width: 100%;
 }
@@ -25,6 +26,5 @@ img {
 }
 
 .jela:hover {
-    cursor: pointer;
     background-color: rgb(255, 255, 255);
 }
