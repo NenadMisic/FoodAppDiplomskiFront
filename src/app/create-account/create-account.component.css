@@ -1,41 +1,76 @@
-#okvir{
-    background-color: rgba(245, 245, 245, 0.7);
-    margin: 0 auto;
-    height: 500px;
-    border: 3px solid lightgray;
-    border-radius: 10px;
-    padding: 30px;
-    color: rgb(20, 20, 20);
-    font-size: 25px;
+#okvir {
+  background-color: rgba(245, 245, 245, 0.7);
+  margin: auto;
+  height: auto;
+  width: 600px;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+  padding: 30px;
+  color: rgb(20, 20, 20);
+  font-size: 23px;
 }
-.container{
-    padding: 5%;
-    background-image: url("../../assets/1184187-gorgerous-healthy-food-wallpaper-1920x1080.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+.container {
+  padding: 5%;
+  background-image: url("../../assets/1184187-gorgerous-healthy-food-wallpaper-1920x1080.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-input{
-    float: right;
-    margin-left: 10px;
-    font-size: 25px;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid rgb(20, 20, 20);
+input {
+  font-size: 23px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgb(20, 20, 20);
+  outline: none;
 }
-.linkedText{
-    color: royalblue;
+.linkedText {
+  color: royalblue;
 }
-.linkedText:hover{
-    cursor: pointer;
-    text-decoration: underline;
+.linkedText:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
-section{
-    padding: 10px;
-    margin-top: 10px;
+
+.rowMarg {
+  padding: 5px;
+  margin-bottom: 15px;
 }
-section:last-child{
-    font-size: 20px;
-    margin-top: 80px;
-    padding-left: 10%;
+
+.rowMarg1 {
+  margin-top: 20px;
+}
+
+p {
+  font-size: 20px;
+  margin: 0;
+}
+
+.login {
+  width: 100%;
+  height: 40px;
+  background-color: #3880ff;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+}
+
+.login:hover {
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: gray;
+}
+
+button:disabled:hover {
+  cursor: default;
+  background-color: gray;
+}
+
+input.ng-invalid.ng-touched {
+  border-bottom: 2px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border-bottom: 2px solid green;
 }

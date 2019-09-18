@@ -7,6 +7,7 @@ import { JelaService } from 'src/app/services/jela.service';
 import { KorpaService } from 'src/app/services/korpa.service';
 import { Subscription } from 'rxjs';
 import { RestoranJelovnik } from 'src/app/shared/restoranJelovnik.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-restoran',
@@ -21,17 +22,23 @@ export class RestoranComponent implements OnInit, OnDestroy {
   jelovnik: Jelo[];
   restoranLoaded = false;
   jelovnikLoaded = false;
+  isLoged: boolean;
 
   constructor(
     private restoranService: RestoraniService,
     private jeloService: JelaService,
     private korpaService: KorpaService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {
     console.log('OnInit');
+    this.isLoged = this.auth.isLoged;
+    this.auth.userSubject.subscribe(user => {
+      this.isLoged = this.auth.isLoged;
+    });
     this.restoran = this.restoranService.getActiveRestoran();
     if (this.restoran === null) {
       let imeRestorana: string;

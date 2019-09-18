@@ -4,6 +4,7 @@ import { Jelo } from 'src/app/shared/jelo.model';
 import { ActivatedRoute } from '@angular/router';
 import { KorpaService } from 'src/app/services/korpa.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-jelo',
@@ -15,10 +16,19 @@ export class JeloComponent implements OnInit, AfterContentInit, OnDestroy {
   jelo: Jelo;
   jeloSub: Subscription;
   imeRestorana: string;
+  isLoged: boolean;
 
-  constructor(public jeloService: JelaService, private korpaService: KorpaService, public route: ActivatedRoute) { }
+  constructor(
+    public jeloService: JelaService,
+    private korpaService: KorpaService,
+    public route: ActivatedRoute,
+    public auth: AuthService) { }
 
   ngOnInit() {
+    this.isLoged = this.auth.isLoged;
+    this.auth.userSubject.subscribe(user => {
+      this.isLoged = this.auth.isLoged;
+    });
     this.jelo = this.jeloService.getIzabranoJelo();
     console.log(this.jelo);
     if (this.jelo === null) {

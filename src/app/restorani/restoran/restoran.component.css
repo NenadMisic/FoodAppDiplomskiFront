@@ -31,3 +31,8 @@
   border: 0;
   border-radius: 7px;
 }
+
+.btn:disabled{
+  background-color: gray;
+}
+

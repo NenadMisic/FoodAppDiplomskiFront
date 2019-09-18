@@ -44,7 +44,7 @@
   </div>
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <button type="button" class="btn btn-success" (click)="toCheckOut(jelo)">Dodaj u korpu</button>
+      <button type="button" class="btn btn-success" (click)="toCheckOut(jelo)" [disabled]="!isLoged">Dodaj u korpu</button>
     </div>
   </div>
 </div>

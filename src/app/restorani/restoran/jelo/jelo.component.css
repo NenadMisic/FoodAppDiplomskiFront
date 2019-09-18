@@ -33,3 +33,7 @@ img {
     height: 100%;
     width: 100%;
 }
+
+.btn:disabled{
+    background-color: gray;
+}

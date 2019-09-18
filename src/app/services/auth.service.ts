@@ -41,9 +41,10 @@ export class AuthService {
   }
   register(userToRegister: UserToRegister): Observable<any> {
     const user = JSON.stringify(userToRegister);
-    return this.http.post(`${environment.url}/auth/register`, user, this.httpOptions
+    return this.http.post(`${environment.url}/auth/register`, userToRegister, this.httpOptions
     ).pipe(map((receivedUser: User) => {
       this.user = receivedUser;
+      this.isLoged = true;
       this.userSubject.next(this.user);
     }, err => {
       console.log(err);

@@ -31,7 +31,7 @@
     <div class="col-md-3" style="padding-top: 5%;">
       <span class="align-middle">{{jelo.price}} RSD</span> &nbsp;
       <span class="align-middle">
-        <button type="button" class="btn btn-success" (click)="toCheckOut(jelo)">U korpu</button>
+        <button type="button" class="btn btn-success" (click)="toCheckOut(jelo)" [disabled]="!isLoged">U korpu</button>
       </span>
     </div>
   </div>

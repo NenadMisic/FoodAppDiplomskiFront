@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Jelo } from 'src/app/shared/jelo.model';
 import { KorpaService } from 'src/app/services/korpa.service';
 import { JelaService } from 'src/app/services/jela.service';
@@ -14,10 +14,12 @@ export class FoodOverlayComponent implements OnInit {
   @Input() open: boolean;
   @Input() jelo: Jelo;
   @Input() hoverOver: string;
+  @Input() isLoged: boolean;
 
   constructor(private korpa: KorpaService, private jelaService: JelaService, private router: Router) { }
 
   ngOnInit() {
+
   }
 
   onJeloClick() {
@@ -27,7 +29,9 @@ export class FoodOverlayComponent implements OnInit {
   }
 
   onKupi() {
-    this.korpa.applyNarudzbinu(this.jelo);
+    if (this.isLoged) {
+      this.korpa.applyNarudzbinu(this.jelo);
+    }
   }
 
 }

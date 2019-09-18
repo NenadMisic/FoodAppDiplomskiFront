@@ -18,8 +18,13 @@
             <div class="foodHome">
                 <!-- <img src="../../assets/foodhome/{{jelo.name}}.jpg"> -->
                 <img [src]="jelo.imgUrl">
-                <app-food-overlay [open]="foodOverlayOpen" [jelo]="jelo" [hoverOver]="hoverOverJelo"></app-food-overlay>
+                <app-food-overlay 
+                [open]="foodOverlayOpen"
+                [isLoged]="isLoged"
+                [jelo]="jelo"
+                [hoverOver]="hoverOverJelo"></app-food-overlay>
             </div>
         </div>
     </div>
 </div>
+

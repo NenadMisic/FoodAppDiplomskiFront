@@ -1,23 +1,52 @@
 <div class="container">
   <div id="okvir" class="col-sm-8 col-md-8 col-lg-8 offset-sm-2 offset-md-2 offset-lg-2">
-    <section>
-      <span class="linkedText" routerLink="/pocetna"> <i class="fas fa-chevron-left"></i> Pocetna </span>
-    </section>
-    <section>
-      <label for="korisnickoIme">Korisnicko ime:</label>
-      <input type="text" name="korisnickoIme" placeholder="Korisnik">
-    </section>
-    <section>
-      <label for="lozinka">Lozinka:</label>
-      <input type="password" name="lozinka" placeholder="*******">
-    </section>
-    <section>
-      <label for="potvrda">Potvrdite lozinku:</label>
-      <input type="password" name="potvrda" placeholder="*******">
-    </section>
-    <section>
-      <span>Vec imate nalog?</span>
-      <p class="linkedText" routerLink="/login"> Ulogujte se.</p>
-    </section>
+    <div class="row rowMarg">
+      <div class="col-md-10 offset-md-1">
+        <span class="linkedText" routerLink="/pocetna">
+          <i class="fas fa-chevron-left"></i> Pocetna
+        </span>
+      </div>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)" method="post">
+      <div class="row rowMarg">
+        <div class="col-md-4 offset-md-1"><label for="korisnickoIme">Korisnicko ime:</label></div>
+        <div class="col-md-5">
+          <input type="text" formControlName="username" placeholder="Korisnicko Ime">
+        </div>
+      </div>
+      <div class="row rowMarg">
+        <div class="col-md-4 offset-md-1"><label for="email">Email:</label></div>
+        <div class="col-md-5">
+          <input type="email" formControlName="email" placeholder="email@email.domen">
+        </div>
+      </div>
+      <div class="row rowMarg">
+        <div class="col-md-4 offset-md-1"><label for="password">Lozinka:</label></div>
+        <div class="col-md-6"><input type="password" formControlName="password1" placeholder="*******" (keyup)="checkPasswords(registerForm)"></div>
+      </div>
+      <div class="row rowMarg">
+        <div class="col-md-4 offset-md-1"><label for="password">Potvrdite:</label></div>
+        <div class="col-md-6"><input type="password" formControlName="password2" placeholder="*******" (keyup)="checkPasswords(registerForm)"></div>
+      </div>
+      <div class="row" style="padding-bottom: 15px; padding-top: 15px;">
+        <div class="col-md-6 offset-md-3">
+          <button class="login btn btn-primary" type="submit"
+          [disabled]="!registerForm.valid || !passValid"> Registruj se </button>
+        </div>
+      </div>
+      <div class="rowMarg1">
+        <div class="row">
+          <div class="col-md-10 offset-md-2">
+            <span>Vec imate nalog?</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-2">
+            <p class="linkedText" routerLink="/login"> Ulogujte se.</p>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
+<app-error [open]="errorOpened" [error]="errorMsg" (openChanged)="closingError()"></app-error>

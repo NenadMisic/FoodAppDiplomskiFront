@@ -1,69 +1,76 @@
-#okvir{
-    background-color: rgba(245, 245, 245, 0.7);
-    margin: 0 auto;
-    height: 500px;
-    width: 600px;
-    border: 3px solid lightgray;
-    border-radius: 10px;
-    padding: 30px;
-    color: rgb(20, 20, 20);
-    font-size: 23px;
+#okvir {
+  background-color: rgba(245, 245, 245, 0.7);
+  margin: 0 auto;
+  height: 500px;
+  width: 600px;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+  padding: 30px;
+  color: rgb(20, 20, 20);
+  font-size: 23px;
 }
-.container{
-    padding: 5%;
-    background-image: url("../../assets/1184187-gorgerous-healthy-food-wallpaper-1920x1080.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+.container {
+  padding: 5%;
+  background-image: url("../../assets/1184187-gorgerous-healthy-food-wallpaper-1920x1080.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-input{
-    font-size: 23px;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid rgb(20, 20, 20);
-    outline: none;
+input {
+  font-size: 23px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgb(20, 20, 20);
+  outline: none;
 }
-.linkedText{
-    color: royalblue;
+.linkedText {
+  color: royalblue;
 }
-.linkedText:hover{
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.rowMarg{
-    padding: 5px;
-    margin-bottom: 15px;
+.linkedText:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.rowMarg1{
-    margin-top: 20px;
+.rowMarg {
+  padding: 5px;
+  margin-bottom: 15px;
 }
 
-p{
-    font-size: 20px;
-    margin: 0;
+.rowMarg1 {
+  margin-top: 20px;
+}
+
+p {
+  font-size: 20px;
+  margin: 0;
 }
 
 .login {
-    width: 100%;
-    height: 40px;
-    background-color: #3880ff;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    border: none;
+  width: 100%;
+  height: 40px;
+  background-color: #3880ff;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
 }
 
 .login:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-button:disabled{
-    background-color: gray;
+button:disabled {
+  background-color: gray;
 }
 
-button:disabled:hover{
-    cursor: default;
-    background-color: gray;
+button:disabled:hover {
+  cursor: default;
+  background-color: gray;
+}
+
+input.ng-invalid.ng-touched {
+  border-bottom: 2px solid red;
+}
+
+input.ng-valid.ng-touched {
+  border-bottom: 2px solid green;
 }

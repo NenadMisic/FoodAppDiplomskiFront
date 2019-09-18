@@ -20,6 +20,7 @@ export class HeadingComponent implements OnInit {
   constructor(private router: Router, private korpaService: KorpaService, private auth: AuthService) { }
 
   ngOnInit() {
+    this.isLoged = this.auth.isLoged;
     this.auth.userSubject.subscribe(user => {
       this.username = user.username;
       this.isLoged = this.auth.isLoged;

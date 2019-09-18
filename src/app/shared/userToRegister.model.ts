@@ -1,8 +1,7 @@
 export class UserToRegister {
     constructor(
-        email: string,
-        username: string,
-        password: string,
-        admin: boolean
+        public email: string,
+        public username: string,
+        public password: string
     ) { }
 }

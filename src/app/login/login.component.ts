@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   login(form: NgForm) {
     const user: LoginUser = new LoginUser(form.value.email, form.value.password);
+    console.log(user);
     this.auth.login(user).subscribe(data => {
       this.router.navigateByUrl('/restorani');
     }, err => {
