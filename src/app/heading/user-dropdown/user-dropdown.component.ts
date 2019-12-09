@@ -20,7 +20,7 @@ export class UserDropdownComponent implements OnInit {
 
   auth() {
     if (this.loggedIn) {
-      this.authService.logout();
+      this.authService.logout().subscribe();
       this.closing.emit(false);
       this.router.navigateByUrl('/pocetna');
     } else {

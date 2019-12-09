@@ -1,7 +1,101 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-8 offset-sm-2 textCentered padding10">
+    <div class="col-sm-6 offset-sm-3 textCentered padding10">
       <h1> Restorani u ponudi: </h1>
+    </div>
+    <div *ngIf="isAdmin" class="col-sm-1 textCentered padding10">
+      <div class="row"><button type="button" class="btn btn-info" (click)="addRes()">
+          <h2><i class="fas fa-plus"></i></h2>
+        </button></div>
+    </div>
+  </div>
+  <div class="row forms" *ngIf="addingRestoran && isAdmin">
+    <div class="col-sm-12">
+      <form [formGroup]="restarauntAddForm" (ngSubmit)="sendAddReq()" method="post">
+        <div class="row ">
+          <div class="col-sm-12 col-md-6 pt1">
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="text" placeholder="Ime" formControlName="name">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="text" placeholder="Adresa" formControlName="address">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="url" placeholder="URL slike" formControlName="url">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="text" placeholder="Telefon: 0XX/XXX-XXXX" formControlName="phone">
+              </div>
+            </div>
+          </div>
+          <div class="col-sx-12 col-md-6 pt1">
+            <textarea type="text" formControlName="description" placeholder="Opis restorana"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 offset-md-9 col-xs-6 offset-6 btns">
+            <span>
+              <button [disabled]="!restarauntAddForm.valid" type="submit" class="btn btn-success">Dodaj</button>
+            </span>
+            <span>
+              <button type="button" class="btn btn-secondary" (click)="cancelAdd()">Otkazi</button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row forms" *ngIf="editingRestoran && isAdmin">
+    <div class="col-sm-12">
+      <form [formGroup]="restarauntEditForm" (ngSubmit)="sendAddReq()" method="post">
+        <div class="row ">
+          <div class="col-sm-12 col-md-6 pt1">
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="text" placeholder="Ime" [ngModel]="restoranToEdit.name" formControlName="newName">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="text" placeholder="Adresa" [ngModel]="restoranToEdit.adress" formControlName="newAddress">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="url" placeholder="URL slike" [ngModel]="restoranToEdit.imgUrl" formControlName="newUrl">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="text" placeholder="Telefon: 0XX/XXX-XXXX" [ngModel]="restoranToEdit.phone"
+                  formControlName="newPhone">
+              </div>
+            </div>
+          </div>
+          <div class="col-sx-12 col-md-6 pt1">
+            <textarea type="text" formControlName="newDescription" [ngModel]="restoranToEdit.description"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 offset-md-9 col-xs-6 offset-6 btns">
+            <span>
+              <button [disabled]="!restarauntEditForm.valid" type="submit" class="btn btn-success"
+                (click)="sendEditReq()">Sacuvaj
+                promene</button>
+            </span>
+            <span>
+              <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Otkazi</button>
+            </span>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
   <div class="row restoran" *ngFor="let restoran of restorani">
@@ -21,5 +115,11 @@
         <span>{{restoran.phone}}</span>
       </div>
     </div>
+    <button type="button" class="editBtn" *ngIf="isAdmin" (click)="editRestoran(restoran)">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button type="button" class="deleteBtn" *ngIf="isAdmin" (click)="deleteRestoranStart(restoran.name)">
+      <i class="fas fa-trash-alt"></i>
+    </button>
   </div>
 </div>

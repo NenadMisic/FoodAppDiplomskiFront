@@ -10,8 +10,13 @@ import { map } from 'rxjs/operators';
 })
 export class RestoraniService {
 
-  private activeRestoran: Restoran;
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
+  private activeRestoran: Restoran;
   private restorani: Restoran[] = [];
 
   constructor(private http: HttpClient) { }
@@ -49,4 +54,15 @@ export class RestoraniService {
     return this.http.get(`${environment.url}/restorani/${name}/full`).pipe();
   }
 
+  public addRestoran(restoran: Restoran): Observable<any> {
+    return this.http.post(`${environment.url}/restorani/add`, restoran, this.httpOptions).pipe();
+  }
+
+  public editRestoran(restoran: Restoran, prevName: string): Observable<any> {
+    return this.http.put(`${environment.url}/restorani/update/${prevName}`, restoran, this.httpOptions).pipe();
+  }
+
+  public deleteRestoran(restoranName: string): Observable<any> {
+    return this.http.delete(`${environment.url}/restorani/delete/${restoranName}`, this.httpOptions).pipe();
+  }
 }

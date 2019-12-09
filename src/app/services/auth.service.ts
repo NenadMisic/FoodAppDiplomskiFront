@@ -3,7 +3,7 @@ import { User } from '../shared/user.model';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { UserToRegister } from '../shared/userToRegister.model';
 import { LoginUser } from '../shared/loginUser.model';
 import { Router } from '@angular/router';
@@ -24,19 +24,31 @@ export class AuthService {
   user: User = this.defaultUser;
   isLoged = false;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.hasLoggedUser().subscribe((res: User) => {
+      if (res !== null) {
+        this.user = res;
+        this.isLoged = true;
+        this.userSubject.next(this.user);
+      } else {
+        this.logout();
+      }
+    });
+  }
+
+  hasLoggedUser() {
+    return this.http.get(`${environment.url}/loged`).pipe(take(1));
+  }
 
   login(user: LoginUser): Observable<any> {
     const jsonUser = JSON.stringify(user);
-    console.log(jsonUser);
-    console.log(`${environment.url}/auth/login`);
     return this.http.post(`${environment.url}/auth/login`, jsonUser, this.httpOptions
     ).pipe(map((receivedUser: User) => {
       this.user = receivedUser;
       this.isLoged = true;
       this.userSubject.next(this.user);
     }, err => {
-      console.log(err);
+      console.error(err);
     }));
   }
   register(userToRegister: UserToRegister): Observable<any> {
@@ -47,7 +59,7 @@ export class AuthService {
       this.isLoged = true;
       this.userSubject.next(this.user);
     }, err => {
-      console.log(err);
+      console.error(err);
     }));
   }
   logout() {
@@ -55,10 +67,6 @@ export class AuthService {
     this.user = this.defaultUser;
     this.userSubject.next(this.user);
     this.router.navigateByUrl('/restorani');
-    /*return this.http.post(`${environment.url}/auth/logout`, this.httpOptions)
-    .pipe();*/
+    return this.http.post(`${environment.url}/auth/logout`, this.httpOptions).pipe();
   }
-
-
-
 }
