@@ -84,3 +84,8 @@ form div[class^="col-"] {
 .forms {
   margin-bottom: 20px;
 }
+
+.btn.btn-info {
+  height: 54px;
+  width: 54px;
+}

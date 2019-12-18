@@ -11,8 +11,8 @@ export class Jelo {
         public price: number,
         public imgUrl: string,
         restoranName: string,
-        public ingredients: Ingredient[],
-        public nutritions: Nutrition[]
+        public sastojci: Ingredient[],
+        public hranVrednosti: Nutrition[]
     ) {
         this.restoranName = this.imeRestorana(restoranName);
     }

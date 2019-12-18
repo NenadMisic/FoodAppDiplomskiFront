@@ -54,7 +54,7 @@
   </div>
   <div class="row forms" *ngIf="editingRestoran && isAdmin">
     <div class="col-sm-12">
-      <form [formGroup]="restarauntEditForm" (ngSubmit)="sendAddReq()" method="post">
+      <form [formGroup]="restarauntEditForm" (ngSubmit)="sendEditReq()" method="put">
         <div class="row ">
           <div class="col-sm-12 col-md-6 pt1">
             <div class="row">

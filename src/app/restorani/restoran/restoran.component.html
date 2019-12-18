@@ -1,11 +1,18 @@
 <div *ngIf="restoranLoaded && jelovnikLoaded" class="container">
   <div class="row">
-    <div class="col-md-12" style="text-align: center">
+    <div class="col-md-3" style="text-align: center">
       <button class="back active" type="button" routerLink="/restorani">
         <i class="fas fa-chevron-left"></i>&nbsp;Restorani
       </button>
+    </div>
+    <div class="col-md-6" style="text-align: center">
       <h1>{{restoran.name}}</h1>
       <p>{{restoran.description}} </p>
+    </div>
+    <div *ngIf="isAdmin" class="col-sm-1 textCentered padding10">
+      <div class="row"><button type="button" class="btn btn-info" (click)="addJelo()">
+          <h2><i class="fas fa-plus"></i></h2>
+        </button></div>
     </div>
   </div>
   <div class="row">
@@ -13,6 +20,85 @@
     <div class="col-md-6" style="text-align: center">{{restoran.phone}}</div>
   </div>
   <hr>
+  <div class="row forms" *ngIf="addingJelo && isAdmin">
+    <div class="col-sm-12">
+      <form [formGroup]="jeloAddForm" (ngSubmit)="sendAddReq()" method="post">
+        <div class="row ">
+          <div class="col-sm-12 col-md-6 pt1">
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="text" placeholder="Ime" formControlName="name">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="url" placeholder="URL slike" formControlName="url">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="number" placeholder="Cena" formControlName="price">
+              </div>
+            </div>
+          </div>
+          <div class="col-sx-12 col-md-6 pt1">
+            <textarea type="text" formControlName="description" placeholder="Opis jela"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 offset-md-9 col-xs-6 offset-6 btns">
+            <span>
+              <button [disabled]="!jeloAddForm.valid" type="submit" class="btn btn-success">Dodaj</button>
+            </span>
+            <span>
+              <button type="button" class="btn btn-secondary" (click)="cancelAdd()">Otkazi</button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row forms" *ngIf="editingJelo && isAdmin">
+      <div class="col-sm-12">
+        <form [formGroup]="jeloEditForm" (ngSubmit)="sendEditReq()" method="put">
+          <div class="row ">
+            <div class="col-sm-12 col-md-6 pt1">
+              <div class="row">
+                <div class="col-sm-12">
+                  <input type="text" placeholder="Ime" [ngModel]="jeloToEdit.name" formControlName="newName">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <input type="url" placeholder="URL slike" [ngModel]="jeloToEdit.imgUrl" formControlName="newUrl">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <input type="text" placeholder="Telefon: 0XX/XXX-XXXX" [ngModel]="jeloToEdit.price"
+                    formControlName="newPhone">
+                </div>
+              </div>
+            </div>
+            <div class="col-sx-12 col-md-6 pt1">
+              <textarea type="text" formControlName="newDescription" [ngModel]="jeloToEdit.description"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 offset-md-9 col-xs-6 offset-6 btns">
+              <span>
+                <button [disabled]="!jeloEditForm.valid" type="submit" class="btn btn-success"
+                  (click)="sendEditReq()">Sacuvaj
+                  promene</button>
+              </span>
+              <span>
+                <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Otkazi</button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   <div class="row">
     <div class="col-md-12" style="text-align: center">
       <h3>U ponudi:</h3>
@@ -34,6 +120,12 @@
         <button type="button" class="btn btn-success" (click)="toCheckOut(jelo)" [disabled]="!isLoged">U korpu</button>
       </span>
     </div>
+    <button type="button" class="editBtn" *ngIf="isAdmin" (click)="editJelo(jelo)">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button type="button" class="deleteBtn" *ngIf="isAdmin" (click)="deleteJeloStart(jelo.name)">
+      <i class="fas fa-trash-alt"></i>
+    </button>
   </div>
 </div>
 <div *ngIf="!restoranLoaded || !jelovnikLoaded" class="container">

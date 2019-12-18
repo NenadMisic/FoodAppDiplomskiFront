@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Jelo } from '../shared/jelo.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { Nutrition } from '../shared/nutrition.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,6 +11,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class JelaService {
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   private izabranoJelo: Jelo;
   private najpopularnijaHrana: Jelo[] = [];
@@ -55,6 +61,18 @@ export class JelaService {
   public getJelaZaRestoran(imeRestorana: string): Observable<any> {
     // return this.najpopularnijaHrana.filter((jelo: Jelo) => jelo.restoran.replace(/\s/g, '_') === imeRestorana.replace(/\s/g, '_'));
     return this.http.get(`${environment.url}/restorani/${imeRestorana}/jelovnik`).pipe();
+  }
+
+  public addJelo(imeRestorana: string, jelo: Jelo): Observable<any> {
+    return this.http.post(`${environment.url}/restorani/${imeRestorana}/add`, jelo, this.httpOptions).pipe();
+  }
+
+  public editJelo(imeRestorana: string, jelo: Jelo): Observable<any> {
+    return this.http.put(`${environment.url}/restorani/${imeRestorana}/edit`, jelo, this.httpOptions).pipe();
+  }
+
+  public deleteJelo(imeRestorana: string, imeJela: string): Observable<any> {
+    return this.http.delete(`${environment.url}/restorani/${imeRestorana}/delete/${imeJela}`).pipe();
   }
 
 }
