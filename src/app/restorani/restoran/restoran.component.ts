@@ -113,7 +113,7 @@ export class RestoranComponent implements OnInit, OnDestroy {
         this.jeloAddForm.get('price').value,
         this.jeloAddForm.get('url').value,
         this.restoran.name,
-        null, null
+        [], []
       );
       this.jeloService.addJelo(this.restoran.name, jelo).subscribe(() => {
         this.getRestoran(this.restoran.name);
@@ -152,7 +152,7 @@ export class RestoranComponent implements OnInit, OnDestroy {
         this.jeloEditForm.get('newDescription').value,
         this.jeloEditForm.get('newPrice').value,
         this.jeloEditForm.get('newUrl').value,
-        this.restoran.name, null, null
+        this.restoran.name, [], []
       );
       this.jeloService.editJelo(this.restoran.name, jelo).subscribe(() => {
         this.getRestoran(this.restoran.name);
