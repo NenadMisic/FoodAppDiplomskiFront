@@ -13,10 +13,10 @@ export interface Narudzbina {
 })
 export class KorpaService {
 
-  private narudzbine: Jelo[] = [];
+  private orders: Jelo[] = [];
+  private listOfOrders: Array<Jelo[]>;
 
   private ordersChanged = new Subject<Array<Jelo[]>>();
-  private orders: Array<Jelo[]>;
 
   constructor() { }
 
@@ -26,72 +26,67 @@ export class KorpaService {
 
   public getOrders(): Array<Jelo[]> {
     this.countOrders();
-    return this.orders;
+    return this.listOfOrders;
   }
 
   public applyNarudzbinu(jelo: Jelo) {
-    this.narudzbine.push(jelo);
-    console.log('Narudzbine: ', this.narudzbine);
+    this.orders.push(jelo);
     this.prijaviPromene();
-    console.log('DODAT 1', this.orders);
   }
 
   public deleteOneNarudzbinu(jeloName: string) {
-    const orders = this.orders;
-    this.orders.forEach(array => {
+    const orders = this.listOfOrders;
+    this.listOfOrders.forEach(array => {
       if (array[0].name === jeloName) {
-        const i = this.orders.indexOf(array);
-        orders[i].pop();
+        const i = this.listOfOrders.indexOf(array);
+        orders[i].length > 1 ?
+        orders[i].pop() : orders.splice(i, 1);
       }
     });
-    this.orders = orders;
+    this.listOfOrders = orders;
     this.prijaviObrisano();
-    console.log('IZBRISAN 1', this.orders);
   }
 
   public deleteNarudzbinu(jeloName: string) {
-    const orders = this.orders;
-    this.orders.forEach(array => {
+    const orders = this.listOfOrders;
+    this.listOfOrders.forEach(array => {
       if (array[0].name === jeloName) {
-        orders.splice(this.orders.indexOf(array), 1);
+        orders.splice(this.listOfOrders.indexOf(array), 1);
       }
     });
-    this.orders = orders;
+    this.listOfOrders = orders;
     this.prijaviObrisano();
-    console.log('IZBRISAN RED', this.orders);
   }
 
   public clear() {
-    this.narudzbine = [];
+    this.orders = [];
     this.prijaviPromene();
   }
 
   private prijaviPromene() {
     this.countOrders();
-    this.ordersChanged.next(this.orders);
+    this.ordersChanged.next(this.listOfOrders);
   }
 
   private prijaviObrisano() {
     const orders = [];
-    this.orders.forEach(array => {
+    this.listOfOrders.forEach(array => {
       array.forEach(el => {
         orders.push(el);
       });
     });
-    this.narudzbine = orders;
-    this.ordersChanged.next(this.orders);
+    this.orders = orders;
+    this.ordersChanged.next(this.listOfOrders);
   }
 
   public countOrders() {
 
-    const groups = [...new Set(this.narudzbine.map(x => x.name))];
+    const groups = [...new Set(this.orders.map(x => x.name))];
     const groupedItems: Array<Jelo[]> = [];
-
-    console.log('Groups: ', groups);
 
     groups.forEach(el => {
       const singleGroup: Jelo[] = [];
-      this.narudzbine.forEach(el2 => {
+      this.orders.forEach(el2 => {
         if (el === el2.name) {
           singleGroup.push(el2);
         }
@@ -99,8 +94,7 @@ export class KorpaService {
       groupedItems.push(singleGroup);
     });
 
-    this.orders = groupedItems;
-    console.log(this.orders);
+    this.listOfOrders = groupedItems;
   }
 
 }

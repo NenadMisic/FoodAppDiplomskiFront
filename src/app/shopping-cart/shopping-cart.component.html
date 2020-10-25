@@ -2,7 +2,7 @@
   <div *ngIf="!empty">
     <div class="row">
       <div class="col-md-12 noPadding" style="text-align: center; margin-bottom: 20px;">
-        <h1> Vase narudbine:</h1>
+        <h1> Vase narudzbine:</h1>
       </div>
     </div>
     <div class="row" *ngFor="let item of cartItems; let i = index">
@@ -10,7 +10,7 @@
         <span> {{ item.name }} </span> <span> ({{ item.restoranName }})&nbsp;:&nbsp;</span> <span>{{groupLength[i]}}</span>
       </div>
       <div class="col-md-3 column noPadding" style="text-align: right;">
-        <span> {{ item.price }} RSD </span>
+        <span> {{ item.price * groupLength[i] }} RSD </span>
         <span>
           <button type="button" class="btn btn-success" (click)="onOrderAddOne(item)">
             <i class="fas fa-plus"></i>

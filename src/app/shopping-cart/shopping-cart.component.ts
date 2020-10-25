@@ -28,9 +28,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.bill = 0;
     this.orders = this.korpaService.getOrders();
     this.updateOrder2(this.orders);
-    console.log('SHOPPING CART ON-INIT: ', this.orders);
     this.orderSub = this.korpaService.getOrdersObs().subscribe((orders: Array<Jelo[]>) => {
-      console.log('SHOPPING CART ON-INIT ON SUB: ', this.orders);
       this.updateOrder2(orders);
     });
 
@@ -41,7 +39,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       this.orders = orders;
       this.cartItems = [];
       this.groupLength = [];
-      console.log('SHOPPING CART UPDATE ORDER: ', this.orders);
       this.empty = false;
       let varBill = 0;
       this.orders.forEach(array => {
@@ -53,8 +50,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     } else {
       this.empty = true;
     }
-    console.log(this.orders.length)
-    console.log(this.empty);
   }
 
   onOrderAddOne(jelo: Jelo) {
@@ -71,7 +66,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('Korpa OnDestroy');
     this.orderSub.unsubscribe();
   }
 

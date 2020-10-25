@@ -24,7 +24,6 @@ export class FoodOverlayComponent implements OnInit {
 
   onJeloClick() {
     this.jelaService.setIzabranoJelo(this.jelo);
-    console.log('/restorani', this.jelo.restoranName, this.jelo.name);
     this.router.navigate(['/restorani', this.jelo.restoranName, this.jelo.name]);
   }
 

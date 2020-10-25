@@ -30,7 +30,6 @@ export class JeloComponent implements OnInit, AfterContentInit, OnDestroy {
       this.isLoged = this.auth.isLoged;
     });
     this.jelo = this.jeloService.getIzabranoJelo();
-    console.log(this.jelo);
     if (this.jelo === null) {
       let imeJela: string;
       this.route.paramMap.subscribe(paramMap => {
@@ -39,7 +38,6 @@ export class JeloComponent implements OnInit, AfterContentInit, OnDestroy {
       });
       this.jeloSub = this.jeloService.findJeloByName(imeJela, this.imeRestorana).subscribe((jelo: Jelo) => {
         this.jelo = jelo;
-        console.log(this.jelo);
       });
     }
   }

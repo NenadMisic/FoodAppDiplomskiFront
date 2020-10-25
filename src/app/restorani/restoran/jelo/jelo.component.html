@@ -20,7 +20,7 @@
         <div class="col-md-12">
           <strong>Sastojci:</strong>
           <br><br>
-          <div class="row" *ngFor="let ingredient of jelo.sastojci">
+          <div class="row" *ngFor="let ingredient of jelo.ingredients">
             <div class="col-xs-12">
               {{ingredient.name}}: {{ingredient.amount}}{{ingredient.unit}}
             </div>
@@ -33,7 +33,7 @@
         <div class="col-md-12">
           <strong>Nutricione vrednosti:</strong>
           <br><br>
-          <div class="row" *ngFor="let nutrition of jelo.hranVrednosti">
+          <div class="row" *ngFor="let nutrition of jelo.nutritions">
             <div class="col-xs-12">
               {{nutrition.name}}: {{nutrition.value}}{{nutrition.unit}}
             </div>

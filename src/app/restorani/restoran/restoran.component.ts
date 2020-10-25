@@ -46,7 +46,6 @@ export class RestoranComponent implements OnInit, OnDestroy {
     this.auth.userSubject.subscribe(user => {
       this.isAdmin = user.admin;
     });
-    console.log('OnInit');
     this.isLoged = this.auth.isLoged;
     this.auth.userSubject.subscribe(user => {
       this.isLoged = this.auth.isLoged;
@@ -56,7 +55,6 @@ export class RestoranComponent implements OnInit, OnDestroy {
       let imeRestorana: string;
       this.route.paramMap.subscribe(paramMap => {
         imeRestorana = paramMap.get('restoran');
-        console.log('Izvuceno ime', imeRestorana);
       });
       this.getRestoran(imeRestorana);
     } else {
@@ -75,7 +73,6 @@ export class RestoranComponent implements OnInit, OnDestroy {
       this.restoranSub.unsubscribe();
     }
     this.restoranSub = this.restoranService.findRestoranByName(imeRestorana).subscribe((restoranJelovnik: RestoranJelovnik) => {
-      console.log(restoranJelovnik);
       this.restoran = restoranJelovnik.restoran;
       this.jelovnik = restoranJelovnik.jelovnik;
       this.restoranLoaded = true;

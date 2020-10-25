@@ -45,7 +45,6 @@ export class RestoraniService {
     if (!this.activeRestoran) {
       return null;
     }
-    console.log(this.activeRestoran.name + ' ' + this.activeRestoran.name.length);
     return this.activeRestoran;
   }
 

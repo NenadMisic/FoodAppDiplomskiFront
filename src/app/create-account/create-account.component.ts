@@ -29,8 +29,6 @@ export class CreateAccountComponent implements OnInit {
 
   register(form: FormGroup) {
     const newUser: UserToRegister = new UserToRegister(form.value.email, form.value.username, form.value.password1);
-    console.log(newUser);
-    console.log(JSON.stringify(newUser));
     this.auth.register(newUser).subscribe(data => {
       this.router.navigateByUrl('/restorani');
     }, err => {

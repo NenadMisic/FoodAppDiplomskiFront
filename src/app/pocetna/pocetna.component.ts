@@ -33,7 +33,6 @@ export class PocetnaComponent implements OnInit, OnDestroy {
 
   onJeloClick(jelo: Jelo) {
     this.jelaService.setIzabranoJelo(jelo);
-    console.log('/restorani', jelo.restoranName, jelo.name);
     this.router.navigate(['/restorani', jelo.restoranName, jelo.name]);
   }
 

@@ -21,7 +21,6 @@ export class User {
         } else {
             newUsername = username;
         }
-        console.log(newUsername);
         return newUsername;
     }
 }
